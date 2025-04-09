@@ -209,7 +209,7 @@ nav .page-title:hover {
 
 
 #pages #main {
-  background: url('/public/img/montagne-home.jpg') no-repeat center center;
+  background: url('/img/montagne-home.jpg') no-repeat center center;
   background-size: cover;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -218,12 +218,12 @@ nav .page-title:hover {
 #pages #work {
   -webkit-transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
   transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
-  background: url('/public/img/mountain-lake.jpg') no-repeat center center;
+  background: url('/img/mountain-lake.jpg') no-repeat center center;
   background-size: cover;
 }
 
 #pages #about {
-  background: url('/public/img/lake-clouds.jpg') no-repeat center center;
+  background: url('/img/lake-clouds.jpg') no-repeat center center;
   background-size: cover;
   -webkit-transform-origin: center;
   -o-transform-origin: center;
@@ -235,7 +235,7 @@ nav .page-title:hover {
 #pages #contact {
   -webkit-transform: translateX(-50vw) translateZ(-50vw) rotateY(-90deg);
   transform: translateX(-50vw) translateZ(-50vw) rotateY(-90deg);
-  background: url('/public/img/camp.jpg') no-repeat center center;
+  background: url('/img/camp.jpg') no-repeat center center;
   background-size: cover;
   background-position-y: 100%;
 }
