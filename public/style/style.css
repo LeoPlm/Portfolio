@@ -594,24 +594,29 @@ nav .page-title:hover {
 @media (max-width: 576px) {
   .main-content,
   .work-content,
-  .about-content,
   .contact-content {
     width: 95%;
+    min-height: 100vh;
     font-size: 1.6rem;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  
+
   .picLP {
     max-width: 40%;
   }
-  
+
   .logos img,
   .flags img {
     width: 5rem;
   }
   
-  .contact-content img {
+
+  .contact-content img:first {
     width: 5rem;
+    margin-top: 20px;
   }
   
   body nav #menu ul li {
