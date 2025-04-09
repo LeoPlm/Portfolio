@@ -1,0 +1,649 @@
+body {
+  -webkit-perspective: 2000px;
+  perspective: 2000px;
+  -webkit-perspective-origin: center;
+  perspective-origin: center;
+  overflow: hidden;
+  background-color: #222222;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+}
+
+body nav {
+  background: none;
+  position: relative;
+}
+
+body nav .button {
+  width: 60px;
+  height: 60px;
+  margin: 0;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+body nav .button:nth-child(2) {
+  margin-left: 30px;
+}
+
+body nav #buttons .buttons-navi {
+  z-index: 100;
+  position: fixed; /* Changé de absolute à fixed pour rester visible au scroll */
+  top: 50%; /* Centre verticalement */
+  left: 0;
+  right: 0;
+  transform: translateY(-50%); /* Ajustement précis du centrage vertical */
+  display: flex;
+  justify-content: space-between; /* Sépare les flèches sur les côtés */
+  pointer-events: none; /* Permet de cliquer à travers sauf sur les boutons */
+}
+
+body nav #buttons .buttons-navi .button {
+  width: 40px;
+  height: 40px;
+  pointer-events: auto; 
+  margin: 0 20px; 
+  background-color: rgba(0,0,0,0.5); 
+}
+
+body nav #buttons .buttons-navi .button span {
+  color: white;
+  font-size: 25px;
+  font-weight: 500;
+  position: absolute;
+}
+
+
+body nav #buttons .buttons-navi .button .button-next {
+  top: 8px;
+  left: auto; 
+  right: 26px; 
+}
+
+body nav #buttons .buttons-navi .button .button-prev {
+  top: 8px;
+  left: 26px; 
+  right: auto; 
+}
+
+body nav #buttons .buttons-menu {
+  z-index: 100;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+body nav #buttons .buttons-menu .button-wrapper {
+  position: relative;
+  right: -10px;
+  top: 15px;
+}
+
+body nav #buttons .buttons-menu .button-wrapper span {
+  display: block;
+  width: 40px;
+  height: 5px;
+  background-color: white;
+  border-radius: 5px;
+  position: absolute;
+}
+
+body nav #buttons .buttons-menu .button-wrapper span:nth-child(1) {
+  top: 0px;
+}
+
+body nav #buttons .buttons-menu .button-wrapper span:nth-child(2) {
+  top: 12px;
+}
+
+body nav #buttons .buttons-menu .button-wrapper span:nth-child(3) {
+  top: 24px;
+}
+
+body nav #menu {
+  display: none;
+  background-color: black;
+  color: white;
+  -webkit-transform-origin: 0% 0%;
+  -o-transform-origin: 0% 0%;
+  transform-origin: 0% 0%;
+  position: absolute;
+  z-index: 99;
+}
+
+body nav #menu ul {
+  list-style: none;
+  width: 100vw;
+  height: 100vh;
+  -webkit-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  -webkit-transform: translateY(25vh);
+  -o-transform: translateY(25vh);
+  transform: translateY(25vh);
+  padding-left: 0;
+}
+
+body nav #menu ul li {
+  display: none;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transform-origin: left;
+  -o-transform-origin: left;
+  transform-origin: left;
+  margin: 0 auto;
+  font-size: 40px;
+  -webkit-transform: translateX(-100vw);
+  -o-transform: translateX(-100vw);
+  transform: translateX(-100vw);
+  cursor: pointer;
+}
+
+nav .page-title {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 101; /* Au-dessus des autres éléments */
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+nav .page-title:hover {
+  opacity: 1;
+  text-shadow: 0 2px 8px rgba(0,0,0,1);
+}
+
+#pages {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 50% 50% -50vw;
+  -o-transform-origin: 50% 50% -50vw;
+  transform-origin: 50% 50% -50vw;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+#pages section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  font-size: 50px;
+  margin: auto 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+
+#pages section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); 
+  z-index: 1;
+}
+#pages section > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+#pages #main {
+  background: url('/public/img/montagne-home.jpg') no-repeat center center;
+  background-size: cover;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+#pages #work {
+  -webkit-transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
+  transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
+  background: url('/public/img/mountain-lake.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#pages #about {
+  background: url('/public/img/lake-clouds.jpg') no-repeat center center;
+  background-size: cover;
+  -webkit-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  -webkit-transform: translateZ(-100vw) rotateY(-180deg);
+  transform: translateZ(-100vw) rotateY(-180deg);
+}
+
+#pages #contact {
+  -webkit-transform: translateX(-50vw) translateZ(-50vw) rotateY(-90deg);
+  transform: translateX(-50vw) translateZ(-50vw) rotateY(-90deg);
+  background: url('/public/img/camp.jpg') no-repeat center center;
+  background-size: cover;
+  background-position-y: 100%;
+}
+
+/* 1st page */
+.main-content {
+  margin: auto;
+  color: #fff;
+  display: flex;
+  flex-direction: column;  
+  align-items: center;  
+  margin-bottom: 5em;
+  padding: 1em;
+  width: 60%;
+  font-size: 2.2rem;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 0 0 5px rgba(255,255,255,0.1);
+  padding-top: 3rem;
+  padding-bottom: 3rem; 
+}
+
+.main-content h1 {
+  font-weight:600;
+}
+
+
+.picLP {
+  max-width: 28%;
+  height: auto; 
+  border-radius: 8px;
+}
+
+.main-content p{
+  padding-top: 2rem;
+  font-size: 2rem;
+}
+
+/* 2nd face */
+.work-content{
+  color: #fff;
+  margin: auto;
+  margin-top: 1em;
+  width: 70%;
+  text-align: center;
+  overflow-y: auto;
+  height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+  padding-bottom: 6rem;
+  font-size: 2.2rem;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 0 0 5px rgba(255,255,255,0.1);
+}
+
+#work .scrollable { 
+  height: 100%; 
+  overflow-y: auto;
+}
+
+.logos{
+  gap: 0.7rem;
+}
+
+.logos img {
+  width: 10rem;
+  height: auto;
+  transition: transform 0.3s ease;
+  background-color: #fff;
+  padding: 0.7rem;
+  border-radius: 10%;
+  margin-bottom: 1rem;
+}
+
+.logos img:hover {
+  transform: scale(1.1);
+}
+
+.h-codewars{
+  margin-top: 3rem;
+}
+
+.codewars:hover{
+  transform: scale(1.1);
+}
+
+.codewars-link {
+  display: inline-block; 
+  line-height: 0; 
+}
+
+.flags img{
+  width: 10rem;
+  height: auto;
+  transition: transform 0.3s ease;
+  background-color: #fff;
+  padding: 0.7rem;
+  border-radius: 10%;
+  margin-bottom: 1rem;
+}
+
+.flags img:hover{
+  transform: scale(1.1);
+}
+
+/* 3rd face */
+.about-content{
+  color: #fff;
+  margin: auto;
+  margin-top: 1em;
+  width: 60%;
+  text-align: center;
+  overflow-y: auto;
+  height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+  padding-bottom: 6rem;
+  font-size: 2.2rem;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 0 0 5px rgba(255,255,255,0.1);
+}
+
+.about-content h2,
+.contact-content h2 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.about-content a,
+.contact-content a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+  margin: 1rem; 
+  padding: 1rem; 
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px; 
+}
+
+.about-content a:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.about-content a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.about-content a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.about-content img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.about-content h3,
+.contact-content h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.about-content p {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.5;
+  text-align: center;
+  max-width: 90%;
+}
+
+.about-content a > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1; 
+  max-width: 60%; 
+}
+
+.about-content h2 {
+  margin-bottom: 2rem; 
+}
+
+/* 4th face */
+.contact-content{
+  color: #fff;
+  margin: auto;
+  margin-top: 1em;
+  width: 60%;
+  text-align: center;
+  overflow-y: auto;
+  height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+  padding-bottom: 6rem;
+  font-size: 2.2rem;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 0 0 5px rgba(255,255,255,0.1);
+}
+
+.contact-content span{
+  font-size: 3rem;
+}
+
+.contact-content img{
+  width: 8rem;
+}
+
+.contact-content img:hover{
+  transform: scale(1.1);
+  transition: all 0.3s ease; 
+}
+
+.contact-content div{
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+/* RESPONSIVE DESIGN*/
+@media (max-width: 1200px) {
+  .main-content,
+  .work-content,
+  .about-content,
+  .contact-content {
+    width: 80%;
+  }
+}
+
+@media (max-width: 992px) {
+  .picLP {
+    max-width: 40%;
+  }
+  
+  .logos img,
+  .flags img {
+    width: 8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content,
+  .work-content,
+  .about-content,
+  .contact-content {
+    width: 90%;
+    padding: 1rem;
+    font-size: 1.8rem;
+  }
+
+  body nav #buttons .buttons-navi .button {
+    width: 35px;
+    height: 35px;
+    margin: 0 10px;
+  }
+  
+  body nav #buttons .buttons-navi .button span {
+    font-size: 20px;
+  }
+  
+  body nav #buttons .buttons-navi .button .button-next {
+    right: 18px;
+    top: 6px;
+  }
+  
+  body nav #buttons .buttons-navi .button .button-prev {
+    left: 18px;
+    top: 6px;
+  }
+  
+  .picLP {
+    max-width: 40%;
+  }
+  
+  .main-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .main-content h2 {
+    font-size: 2rem;
+  }
+  
+  .main-content p {
+    font-size: 1.6rem;
+  }
+  
+  /* Section Skills */
+  .logos {
+    gap: 0.5rem;
+  }
+  
+  .logos img,
+  .flags img {
+    width: 6rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Section Projects */
+  .about-content a {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .about-content img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+  }
+  
+  .about-content a > div {
+    max-width: 100%;
+  }
+  
+  .about-content h3,
+  .about-content p {
+    text-align: center;
+  }
+  
+  /* Section Contact */
+  .contact-content img {
+    width: 6rem;
+  }
+  
+  .contact-content span {
+    font-size: 2rem;
+  }
+  
+  .contact-content div {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-content,
+  .work-content,
+  .about-content,
+  .contact-content {
+    width: 95%;
+    font-size: 1.6rem;
+  }
+  
+  .picLP {
+    max-width: 40%;
+  }
+  
+  .logos img,
+  .flags img {
+    width: 5rem;
+  }
+  
+  .contact-content img {
+    width: 5rem;
+  }
+  
+  body nav #menu ul li {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-content h2 {
+    font-size: 2.4rem;
+  }
+  
+  .about-content h3 {
+    font-size: 2rem;
+  }
+  
+  .about-content p {
+    font-size: 1.6rem;
+  }
+  
+  .about-content img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* title */
+@media (max-width: 768px) {
+  nav .page-title {
+    font-size: 1.4rem;
+    top: 15px;
+    left: 15px;
+  }
+}
