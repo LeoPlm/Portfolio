@@ -46,17 +46,28 @@ const changePage = (direction) => {
   }
 }
 
-const animateCube = (target) => {
-  pages.velocity(
+const animateCube = (targetRotation) => {
+  pages.velocity( // Assurez-vous que 'pages' correspond au conteneur du cube
     {
-      rotateY:[target],
+      rotateY: [targetRotation],
     },
     {
       duration: 1000,
       easing: "easeOut",
-    },
-  )
-}
+      begin: () => {
+        pages.css('pointer-events', 'none'); // Désactiver les événements sur le conteneur pendant la transition
+        allPages.forEach(page => { // 'allPages' doit contenir vos éléments de face
+          page.css('pointer-events', 'none'); // S'assurer que les faces sont initialement inactives
+        });
+        // 'pageMap' doit mapper l'ordre à vos éléments de face
+        pageMap[pageOrder[currentPageIndex]].css('pointer-events', 'auto'); // Activer les événements sur la face active
+      },
+      complete: () => {
+        pages.css('pointer-events', 'auto'); // Réactiver les événements sur le conteneur après la transition
+      }
+    }
+  );
+};
 
 return {
   change: changePage,
@@ -82,11 +93,14 @@ const bottomSpan = buttonMenuContent.find('span:nth-child(3)');
 const spans = [topSpan,middleSpan,bottomSpan];
 
 const windowOnUnload = (fn) => {
-  const unload = () => {
-    fn()
-    window.removeEventListener('unload',unload);
-  }
-  window.addEventListener('unload',unload);
+  const handler = () => {
+    fn();
+    window.removeEventListener('pagehide', handler);
+    window.removeEventListener('beforeunload', handler);
+  };
+  
+  window.addEventListener('pagehide', handler);
+  window.addEventListener('beforeunload', handler);
 };
 
 const animateChangePageButton = () => {
@@ -298,12 +312,15 @@ const pagesTrs = new pagesTransition();
 const navi = new navigation(pagesTrs);
 
 const domOnLoad = (fn) => {
-  const unload = () => {
-    window.removeEventListener('DOMContentLoaded',fn);
-    window.removeEventListener('unload',unload);
-  }
-  window.addEventListener('DOMContentLoaded',fn);
-  window.addEventListener('unload',unload);
+  $(fn); 
+  
+  const handler = () => {
+    window.removeEventListener('pagehide', handler);
+    window.removeEventListener('beforeunload', handler);
+  };
+  
+  window.addEventListener('pagehide', handler);
+  window.addEventListener('beforeunload', handler);
 };
 
 const init = () => {
