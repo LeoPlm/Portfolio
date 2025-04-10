@@ -32,14 +32,15 @@ body nav .button:nth-child(2) {
 
 body nav #buttons .buttons-navi {
   z-index: 100;
-  position: fixed; /* Changé de absolute à fixed pour rester visible au scroll */
-  top: 50%; /* Centre verticalement */
+  position: fixed; 
+  top: 50%; 
   left: 0;
   right: 0;
-  transform: translateY(-50%); /* Ajustement précis du centrage vertical */
+  transform: translateY(-50%); 
   display: flex;
-  justify-content: space-between; /* Sépare les flèches sur les côtés */
-  pointer-events: none; /* Permet de cliquer à travers sauf sur les boutons */
+  justify-content: space-between; 
+  pointer-events: none; 
+  z-index: 9999;
 }
 
 body nav #buttons .buttons-navi .button {
@@ -56,7 +57,6 @@ body nav #buttons .buttons-navi .button span {
   font-weight: 500;
   position: absolute;
 }
-
 
 body nav #buttons .buttons-navi .button .button-next {
   top: 8px;
@@ -206,7 +206,6 @@ nav .page-title:hover {
   z-index: 2;
 }
 
-
 #pages #main {
   background: url('/img/montagne-home.jpg') no-repeat center center;
   background-size: cover;
@@ -317,13 +316,17 @@ nav .page-title:hover {
   margin-top: 3rem;
 }
 
+.codewars{
+  transition: transform 0.3s ease;
+}
+
 .codewars:hover{
   transform: scale(1.1);
 }
 
 .codewars-link {
   display: inline-block; 
-  line-height: 0; 
+  line-height: 0;
 }
 
 .flags img{
@@ -338,6 +341,16 @@ nav .page-title:hover {
 
 .flags img:hover{
   transform: scale(1.1);
+}
+
+.hiking-pic{
+  margin: auto;
+  width: 50%;
+  transition: transform 0.3s ease;
+}
+
+.hiking-pic:hover{
+  transform: scale(1.5);
 }
 
 /* 3rd face */
@@ -593,12 +606,10 @@ nav .page-title:hover {
 
 @media (max-width: 576px) {
   .main-content,
-  .work-content,
   .contact-content {
     width: 95%;
     min-height: 100vh;
     font-size: 1.6rem;
-    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -46,28 +46,17 @@ const changePage = (direction) => {
   }
 }
 
-const animateCube = (targetRotation) => {
-  pages.velocity( // Assurez-vous que 'pages' correspond au conteneur du cube
+const animateCube = (target) => {
+  pages.velocity(
     {
-      rotateY: [targetRotation],
+      rotateY:[target],
     },
     {
       duration: 1000,
       easing: "easeOut",
-      begin: () => {
-        pages.css('pointer-events', 'none'); // Désactiver les événements sur le conteneur pendant la transition
-        allPages.forEach(page => { // 'allPages' doit contenir vos éléments de face
-          page.css('pointer-events', 'none'); // S'assurer que les faces sont initialement inactives
-        });
-        // 'pageMap' doit mapper l'ordre à vos éléments de face
-        pageMap[pageOrder[currentPageIndex]].css('pointer-events', 'auto'); // Activer les événements sur la face active
-      },
-      complete: () => {
-        pages.css('pointer-events', 'auto'); // Réactiver les événements sur le conteneur après la transition
-      }
-    }
-  );
-};
+    },
+  )
+}
 
 return {
   change: changePage,
@@ -93,14 +82,11 @@ const bottomSpan = buttonMenuContent.find('span:nth-child(3)');
 const spans = [topSpan,middleSpan,bottomSpan];
 
 const windowOnUnload = (fn) => {
-  const handler = () => {
-    fn();
-    window.removeEventListener('pagehide', handler);
-    window.removeEventListener('beforeunload', handler);
-  };
-  
-  window.addEventListener('pagehide', handler);
-  window.addEventListener('beforeunload', handler);
+  const unload = () => {
+    fn()
+    window.removeEventListener('unload',unload);
+  }
+  window.addEventListener('unload',unload);
 };
 
 const animateChangePageButton = () => {
@@ -308,31 +294,28 @@ return {
 }
 
 function Apx (navigation, pagesTransition) {
-const pagesTrs = new pagesTransition();
-const navi = new navigation(pagesTrs);
+  const pagesTrs = new pagesTransition();
+  const navi = new navigation(pagesTrs);
 
-const domOnLoad = (fn) => {
-  $(fn); 
-  
-  const handler = () => {
-    window.removeEventListener('pagehide', handler);
-    window.removeEventListener('beforeunload', handler);
+  const domOnLoad = (fn) => {
+    const handler = () => {
+      fn();
+      document.removeEventListener('DOMContentLoaded', handler);
+    };
+    document.addEventListener('DOMContentLoaded', handler);
   };
-  
-  window.addEventListener('pagehide', handler);
-  window.addEventListener('beforeunload', handler);
-};
 
-const init = () => {
-  const onInit = Object.values(navi);
-  onInit.forEach((fn)=>{
-    domOnLoad(fn);
-  });
+  const init = () => {
+    const onInit = Object.values(navi);
+    onInit.forEach((fn)=>{
+      domOnLoad(fn);
+    });
+  }
+  return {
+    init: init,
+  }
 }
-return {
-  init: init,
-}
-}
+
 
 const app = new Apx(Navigation, PageTransitions);
 app.init();
