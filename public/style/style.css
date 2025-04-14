@@ -606,6 +606,7 @@ nav .page-title:hover {
 
 @media (max-width: 576px) {
   .main-content,
+  .work-content,
   .contact-content {
     width: 95%;
     min-height: 100vh;
