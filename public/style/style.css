@@ -202,7 +202,7 @@ nav .page-title:hover {
 
 #pages #work {
   -webkit-transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
-  transform: translateX(30vw) translateZ(-10vw) rotateY(90deg);
+  transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
   background: url('/img/mountain-lake.jpg') no-repeat center center;
   background-size: cover;
 }
