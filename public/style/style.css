@@ -179,7 +179,6 @@ nav .page-title:hover {
   margin: auto;
   display: flex;
   align-content: center;
-  height: 100vh;
 }
 
 #pages section::before {
@@ -276,7 +275,6 @@ nav .page-title:hover {
   font-weight: 500;
   font-family: 'Poppins', sans-serif;
   text-shadow: 0 0 5px rgba(255,255,255,0.1);
-  -webkit-overflow-scrolling: touch;
 }
 
 .work-content.logos{
@@ -598,17 +596,6 @@ nav .page-title:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  .work-content {
-    overflow-y: scroll !important; /* Force le scroll même si le contenu semble tenir */
-    -webkit-overflow-scrolling: touch; /* Smooth scroll iOS */
-    touch-action: pan-y; 
-    min-height: 150vh;
-  }
-  .work-content img, .work-content iframe {
-    pointer-events: auto; /* S'assurer qu'ils n'interfèrent pas */
-    max-width: 100%; /* Éviter un débordement horizontal */
   }
 
   .picLP {
