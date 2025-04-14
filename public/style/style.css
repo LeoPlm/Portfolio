@@ -205,10 +205,6 @@ nav .page-title:hover {
   transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
   background: url('/img/mountain-lake.jpg') no-repeat center center;
   background-size: cover;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-backface-visibility: visible;
-  backface-visibility: visible;
 }
 
 #pages #about {
@@ -270,6 +266,7 @@ nav .page-title:hover {
   margin-top: 1em;
   width: 70%;
   text-align: center;
+  overflow-y: auto;
   height: 100%;
   scrollbar-width: thin;
   scrollbar-color: rgba(255,255,255,0.2) transparent;
