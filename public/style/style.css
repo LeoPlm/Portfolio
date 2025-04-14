@@ -317,7 +317,7 @@ nav .page-title:hover {
 .flags img:hover{
   transform: scale(1.1);
 }
-
+/* 
 .hiking-pic{
   margin: auto;
   width: 50%;
@@ -326,7 +326,7 @@ nav .page-title:hover {
 
 .hiking-pic:hover{
   transform: scale(1.5);
-}
+} */
 
 /* 3rd face */
 .about-content{
@@ -599,6 +599,9 @@ nav .page-title:hover {
     width: 5rem;
   }
   
+  .codewars{
+    width: 75%;
+  }
 
   .contact-content img:first {
     width: 5rem;
