@@ -7,8 +7,6 @@ body {
   background-color: #222222;
   width: 100vw;
   height: 100vh;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
 }
 
 body nav {
@@ -38,9 +36,7 @@ body nav #buttons .buttons-navi {
   right: 0;
   transform: translateY(-50%); 
   display: flex;
-  justify-content: space-between; 
-  pointer-events: none; 
-  z-index: 9999;
+  justify-content: space-between;
 }
 
 body nav #buttons .buttons-navi .button {
@@ -613,7 +609,6 @@ nav .page-title:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: auto;
   }
 
   .picLP {
