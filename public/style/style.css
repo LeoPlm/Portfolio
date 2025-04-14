@@ -275,13 +275,15 @@ nav .page-title:hover {
   font-weight: 500;
   font-family: 'Poppins', sans-serif;
   text-shadow: 0 0 5px rgba(255,255,255,0.1);
+  -webkit-overflow-scrolling: touch;
 }
 
 .work-content.logos{
   gap: 0.7rem;
 }
 
-.logos img {
+.logos img,
+.flags img {
   width: 10rem;
   height: auto;
   transition: transform 0.3s ease;
@@ -310,16 +312,6 @@ nav .page-title:hover {
 .codewars-link {
   display: inline-block; 
   line-height: 0;
-}
-
-.flags img{
-  width: 10rem;
-  height: auto;
-  transition: transform 0.3s ease;
-  background-color: #fff;
-  padding: 0.7rem;
-  border-radius: 10%;
-  margin-bottom: 1rem;
 }
 
 .flags img:hover{
